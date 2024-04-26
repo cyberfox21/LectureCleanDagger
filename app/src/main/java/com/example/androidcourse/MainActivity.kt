@@ -1,20 +1,72 @@
 package com.example.androidcourse
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.androidcourse.databinding.ActivityMainBinding
 
+/**
+ * @author t.shkolnik
+ */
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var shopListAdapter: ShopListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setupRecyclerView()
+        observeData()
+    }
+
+    private fun setupRecyclerView() {
+        with(binding.rvShopList) {
+            shopListAdapter = ShopListAdapter()
+            shopListAdapter.addDelegate(
+                listOf(
+                    ShopItemEnabledAdapterDelegate(
+                        onShopItemClickListener = {},
+                        onLongShopItemClickListener = {},
+                    ),
+                    ShopItemDisabledAdapterDelegate(
+                        onShopItemClickListener = {},
+                        onLongShopItemClickListener = {},
+                    ),
+                )
+            )
+            adapter = shopListAdapter
         }
+    }
+
+    private fun observeData() {
+        shopListAdapter.submitList(
+            listOf(
+                ShopItemEnabledDelegateItem(
+                    name = "Cалфетки",
+                    count = 3,
+                ),
+                ShopItemEnabledDelegateItem(
+                    name = "Cметана",
+                    count = 1,
+                ),
+                ShopItemDisabledDelegateItem(
+                    name = "Хлеб",
+                    count = 2,
+                ),
+                ShopItemDisabledDelegateItem(
+                    name = "Шоколадка",
+                    count = 5,
+                ),
+                ShopItemEnabledDelegateItem(
+                    name = "Молоко",
+                    count = 1,
+                ),
+                ShopItemDisabledDelegateItem(
+                    name = "Помидоры",
+                    count = 2,
+                )
+            )
+        )
     }
 }
