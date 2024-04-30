@@ -1,9 +1,9 @@
-package com.example.androidcourse
+package com.example.androidcourse.presentation
 
 /**
  * @author t.shkolnik
  */
-class ShopItemEnabledDelegateItem(
+class ShopItemDisabledDelegateItem (
     val name: String,
     val count: Int,
     var id: Int = ShopListItem.UNDEFINED_ID

@@ -1,4 +1,4 @@
-package com.example.androidcourse
+package com.example.androidcourse.presentation
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidcourse.databinding.ItemShopEnabledBinding

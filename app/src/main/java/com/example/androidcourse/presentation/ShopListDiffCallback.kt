@@ -1,8 +1,7 @@
-package com.example.androidcourse
+package com.example.androidcourse.presentation
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
-import com.example.androidcourse.DelegateItem
 
 /**
  * @author t.shkolnik

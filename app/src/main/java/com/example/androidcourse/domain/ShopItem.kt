@@ -1,13 +1,13 @@
-package com.example.androidcourse
+package com.example.androidcourse.domain
 
 /**
  * @author t.shkolnik
  */
-data class ShopListItem(
+data class ShopItem(
     val name: String,
     val count: Int,
+    var id: Int = UNDEFINED_ID,
     val enabled: Boolean,
-    var id: Int = UNDEFINED_ID
 ) {
     companion object {
         const val UNDEFINED_ID = 0

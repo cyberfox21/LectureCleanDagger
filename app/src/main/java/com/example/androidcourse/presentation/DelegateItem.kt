@@ -1,4 +1,4 @@
-package com.example.androidcourse
+package com.example.androidcourse.presentation
 
 /**
  * @author t.shkolnik

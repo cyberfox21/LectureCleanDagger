@@ -1,14 +1,8 @@
-package com.example.androidcourse
+package com.example.androidcourse.presentation
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-
-/**
- * @author t.shkolnik
- */
-typealias OnLongShopItemClickListener = (shopItem: ShopListItem) -> Unit
-typealias OnShopItemClickListener = (shopItem: ShopListItem) -> Unit
 
 class ShopListAdapter : ListAdapter<DelegateItem, RecyclerView.ViewHolder>(ShopListDiffCallback()) {
 
