@@ -7,13 +7,13 @@ import com.example.androidcourse.data.entity.ShopItemDTO
  */
 interface RemoteDataSource {
 
-    fun getShopList(): List<ShopItemDTO>
+    suspend fun getShopList(): List<ShopItemDTO>
 
-    fun getShopItem(shopItemId: Int): ShopItemDTO?
+    suspend fun getShopItem(shopItemId: Int): ShopItemDTO?
 
-    fun addShopItem(shopItem: ShopItemDTO)
+    suspend fun addShopItem(shopItemId: String, content: String)
 
-    fun editShopItem(shopItem: ShopItemDTO)
+    suspend fun editShopItem(shopItemId: String, content: String)
 
-    fun deleteShopItem(shopItem: ShopItemDTO)
+    suspend fun deleteShopItem(shopItemId: String, content: String)
 }

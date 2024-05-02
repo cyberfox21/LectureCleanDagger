@@ -9,11 +9,9 @@ interface LocalDataSource {
 
     fun getShopList(): List<ShopItemDbModel>
 
-    fun getShopItem(shopItemId: Int): ShopItemDbModel?
+    suspend fun getShopItem(shopItemId: Int): ShopItemDbModel?
 
-    fun addShopItem(shopItem: ShopItemDbModel)
+    suspend fun addShopItem(shopItem: ShopItemDbModel)
 
-    fun editShopItem(shopItem: ShopItemDbModel)
-
-    fun deleteShopItem(shopItem: ShopItemDbModel)
+    suspend fun deleteShopItem(shopItem: ShopItemDbModel)
 }
