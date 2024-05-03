@@ -11,10 +11,17 @@ class ShopItemDtoMapper {
     fun map(dto: ShopItemDTO): ShopItem {
         return with(dto){
             ShopItem(
+                id = id ?: ShopItem.UNDEFINED_ID,
                 name = name ?: DEFAULT_NAME,
                 count = count ?: DEFAULT_COUNT,
                 enabled = true,
             )
+        }
+    }
+
+    fun mapToShopItemDtoString(item: ShopItem): String {
+        return with(item){
+            id.toString().plus(" ").plus(name).plus(" ").plus(count)
         }
     }
 

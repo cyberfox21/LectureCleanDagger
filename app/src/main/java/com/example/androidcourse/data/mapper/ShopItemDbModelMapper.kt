@@ -18,4 +18,15 @@ class ShopItemDbModelMapper {
             )
         }
     }
+
+    fun mapToShopItemDbModel(item: ShopItem): ShopItemDbModel {
+        return with(item) {
+            ShopItemDbModel(
+                id = id,
+                name = name,
+                count = count,
+                enabled = enabled,
+            )
+        }
+    }
 }
