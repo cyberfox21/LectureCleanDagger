@@ -1,4 +1,4 @@
-package com.example.androidcourse.presentation
+package com.example.androidcourse.presentation.recyclerview
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

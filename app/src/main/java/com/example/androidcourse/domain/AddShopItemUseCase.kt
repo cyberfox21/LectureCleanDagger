@@ -5,7 +5,7 @@ package com.example.androidcourse.domain
  */
 class AddShopItemUseCase(private val shopListRepository: ShopListRepository) {
 
-    operator fun invoke(shopItem: ShopItem){
+    suspend operator fun invoke(shopItem: ShopItem){
         shopListRepository.addShopItem(shopItem)
     }
 }

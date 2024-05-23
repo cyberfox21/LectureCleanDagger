@@ -1,9 +1,11 @@
-package com.example.androidcourse.presentation
+package com.example.androidcourse.presentation.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidcourse.databinding.ItemShopDisabledBinding
+import com.example.androidcourse.presentation.OnLongShopItemClickListener
+import com.example.androidcourse.presentation.OnShopItemClickListener
 
 /**
  * @author t.shkolnik

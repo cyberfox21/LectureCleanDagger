@@ -1,4 +1,6 @@
-package com.example.androidcourse.presentation
+package com.example.androidcourse.presentation.recyclerview
+
+import com.example.androidcourse.presentation.ShopListItem
 
 /**
  * @author t.shkolnik

@@ -1,4 +1,4 @@
-package com.example.androidcourse.presentation
+package com.example.androidcourse.presentation.recyclerview
 
 /**
  * @author t.shkolnik

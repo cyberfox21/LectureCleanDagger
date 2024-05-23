@@ -1,7 +1,8 @@
-package com.example.androidcourse.presentation
+package com.example.androidcourse.presentation.recyclerview
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
+import com.example.androidcourse.presentation.recyclerview.DelegateItem
 
 /**
  * @author t.shkolnik
