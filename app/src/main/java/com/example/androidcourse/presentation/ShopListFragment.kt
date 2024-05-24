@@ -1,11 +1,17 @@
-package com.example.androidcourse.presentation.recyclerview
+package com.example.androidcourse.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.example.androidcourse.data.repository.ShopItemListRepository
 import com.example.androidcourse.databinding.FragmentShopListBinding
+import com.example.androidcourse.domain.GetShopListUseCase
+import com.example.androidcourse.presentation.recyclerview.ShopListAdapter
+import kotlinx.coroutines.launch
 
 /**
  * @author t.shkolnik
@@ -17,6 +23,15 @@ class ShopListFragment : Fragment() {
 
     private lateinit var shopListAdapter: ShopListAdapter
 
+    private val repository = ShopItemListRepository()
+    private val getShopListUseCase = GetShopListUseCase(repository)
+
+    private val mapper = ShopListItemMapper()
+
+    private val viewModel = ViewModelProvider(
+        this,
+        ShopListViewModelFactory(getShopListUseCase, mapper),
+    )[ShopListViewModel::class.java]
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,24 +44,21 @@ class ShopListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        observeData()
     }
 
     private fun setupRecyclerView() {
         with(binding.rvShopList) {
             shopListAdapter = ShopListAdapter()
-            shopListAdapter.addDelegate(
-                listOf(
-                    ShopItemEnabledAdapterDelegate(
-                        onShopItemClickListener = {},
-                        onLongShopItemClickListener = {},
-                    ),
-                    ShopItemDisabledAdapterDelegate(
-                        onShopItemClickListener = {},
-                        onLongShopItemClickListener = {},
-                    ),
-                )
-            )
             adapter = shopListAdapter
+        }
+    }
+
+    private fun observeData() {
+        lifecycleScope.launch {
+            viewModel.shopItems.collect {
+                shopListAdapter.submitList(it)
+            }
         }
     }
 
