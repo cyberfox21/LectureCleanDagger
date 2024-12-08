@@ -4,8 +4,8 @@ import com.example.androidcourse.data.datasource.local.LocalDataSource
 import com.example.androidcourse.data.datasource.remote.RemoteDataSource
 import com.example.androidcourse.data.mapper.ShopItemDbModelMapper
 import com.example.androidcourse.data.mapper.ShopItemDtoMapper
-import com.example.androidcourse.domain.ShopItem
-import com.example.androidcourse.domain.ShopListRepository
+import com.example.androidcourse.domain.entity.ShopItem
+import com.example.androidcourse.domain.repository.ShopListRepository
 
 /**
  * @author t.shkolnik

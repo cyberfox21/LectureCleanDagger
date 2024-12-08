@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.androidcourse.data.repository.ShopItemListRepository
 import com.example.androidcourse.databinding.FragmentShopListBinding
-import com.example.androidcourse.domain.GetShopListUseCase
+import com.example.androidcourse.domain.usecase.GetShopListUseCase
 import com.example.androidcourse.presentation.recyclerview.ShopListAdapter
 import kotlinx.coroutines.launch
 
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class ShopListFragment : Fragment() {
 
     private var _binding: FragmentShopListBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding) { "_binding is null" }
 
     private lateinit var shopListAdapter: ShopListAdapter
 

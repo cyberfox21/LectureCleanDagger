@@ -1,7 +1,7 @@
 package com.example.androidcourse.data.mapper
 
 import com.example.androidcourse.data.entity.ShopItemDbModel
-import com.example.androidcourse.domain.ShopItem
+import com.example.androidcourse.domain.entity.ShopItem
 
 /**
  * @author t.shkolnik

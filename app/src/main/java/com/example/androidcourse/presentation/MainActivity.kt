@@ -2,12 +2,14 @@ package com.example.androidcourse.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.androidcourse.databinding.ActivityMainBinding
 import com.example.androidcourse.presentation.recyclerview.ShopItemDisabledAdapterDelegate
 import com.example.androidcourse.presentation.recyclerview.ShopItemDisabledDelegateItem
 import com.example.androidcourse.presentation.recyclerview.ShopItemEnabledAdapterDelegate
 import com.example.androidcourse.presentation.recyclerview.ShopItemEnabledDelegateItem
 import com.example.androidcourse.presentation.recyclerview.ShopListAdapter
+import kotlinx.coroutines.launch
 
 /**
  * @author t.shkolnik

@@ -1,4 +1,6 @@
-package com.example.androidcourse.domain
+package com.example.androidcourse.domain.repository
+
+import com.example.androidcourse.domain.entity.ShopItem
 
 /**
  * @author t.shkolnik

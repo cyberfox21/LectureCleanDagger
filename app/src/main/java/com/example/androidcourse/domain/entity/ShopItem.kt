@@ -1,4 +1,4 @@
-package com.example.androidcourse.domain
+package com.example.androidcourse.domain.entity
 
 /**
  * @author t.shkolnik
