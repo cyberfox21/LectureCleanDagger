@@ -10,11 +10,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * @author t.shkolnik
  */
-class ShopListViewModel(
+class ShopListViewModel @Inject constructor(
     private val getShopList: GetShopListUseCase,
     private val mapper: ShopListItemMapper,
 ) : ViewModel() {

@@ -1,16 +1,17 @@
 package com.example.androidcourse.domain.usecase
 
-import com.example.androidcourse.data.repository.ShopItemListRepository
 import com.example.androidcourse.domain.entity.ShopItem
+import com.example.androidcourse.domain.repository.ShopListRepository
+import javax.inject.Inject
 
 /**
  * @author t.shkolnik
  */
-//class GetShopListUseCase(private val shopListRepository: ShopListRepository) {
-class GetShopListUseCase(private val shopListRepository: ShopItemListRepository) {
+class GetShopListUseCase @Inject constructor(
+    private val shopListRepository: ShopListRepository
+) {
 
     suspend operator fun invoke(): List<ShopItem> {
-//        return shopListRepository.getShopList()
-        return emptyList()
+        return shopListRepository.getShopList()
     }
 }

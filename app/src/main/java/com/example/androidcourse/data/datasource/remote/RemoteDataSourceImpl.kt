@@ -1,11 +1,14 @@
 package com.example.androidcourse.data.datasource.remote
 
 import com.example.androidcourse.data.entity.ShopItemDTO
+import javax.inject.Inject
 
 /**
  * @author t.shkolnik
  */
-class RemoteDataSourceImpl(private val api: ApiService) : RemoteDataSource {
+class RemoteDataSourceImpl @Inject constructor(
+    private val api: ApiService
+) : RemoteDataSource {
 
     override suspend fun getShopList(): List<ShopItemDTO> {
         return api.getShopList()
@@ -23,7 +26,7 @@ class RemoteDataSourceImpl(private val api: ApiService) : RemoteDataSource {
         api.editShopItem(shopItemId, content)
     }
 
-    override suspend fun deleteShopItem(shopItemId: String, content: String ) {
+    override suspend fun deleteShopItem(shopItemId: String, content: String) {
         api.deleteShopItem(shopItemId, content)
     }
 }

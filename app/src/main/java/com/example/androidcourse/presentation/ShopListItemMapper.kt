@@ -4,15 +4,16 @@ import com.example.androidcourse.domain.entity.ShopItem
 import com.example.androidcourse.presentation.recyclerview.DelegateItem
 import com.example.androidcourse.presentation.recyclerview.ShopItemDisabledDelegateItem
 import com.example.androidcourse.presentation.recyclerview.ShopItemEnabledDelegateItem
+import javax.inject.Inject
 
 /**
  * @author t.shkolnik
  */
-class ShopListItemMapper {
+class ShopListItemMapper @Inject constructor() {
 
     fun map(item: ShopItem): DelegateItem {
         return with(item) {
-            if(item.enabled){
+            if (item.enabled) {
                 ShopItemEnabledDelegateItem(
                     name = name,
                     count = count,

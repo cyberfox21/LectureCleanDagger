@@ -2,14 +2,15 @@ package com.example.androidcourse.data.mapper
 
 import com.example.androidcourse.data.entity.ShopItemDTO
 import com.example.androidcourse.domain.entity.ShopItem
+import javax.inject.Inject
 
 /**
  * @author t.shkolnik
  */
-class ShopItemDtoMapper {
+class ShopItemDtoMapper @Inject constructor() {
 
     fun map(dto: ShopItemDTO): ShopItem {
-        return with(dto){
+        return with(dto) {
             ShopItem(
                 id = id ?: ShopItem.UNDEFINED_ID,
                 name = name ?: DEFAULT_NAME,
@@ -20,7 +21,7 @@ class ShopItemDtoMapper {
     }
 
     fun mapToShopItemDtoString(item: ShopItem): String {
-        return with(item){
+        return with(item) {
             id.toString().plus(" ").plus(name).plus(" ").plus(count)
         }
     }

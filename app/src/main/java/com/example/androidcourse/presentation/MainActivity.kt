@@ -2,7 +2,9 @@ package com.example.androidcourse.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.androidcourse.MyApp
 import com.example.androidcourse.databinding.ActivityMainBinding
 import com.example.androidcourse.presentation.recyclerview.ShopItemDisabledAdapterDelegate
 import com.example.androidcourse.presentation.recyclerview.ShopItemDisabledDelegateItem
@@ -10,6 +12,7 @@ import com.example.androidcourse.presentation.recyclerview.ShopItemEnabledAdapte
 import com.example.androidcourse.presentation.recyclerview.ShopItemEnabledDelegateItem
 import com.example.androidcourse.presentation.recyclerview.ShopListAdapter
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * @author t.shkolnik
@@ -19,10 +22,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var shopListAdapter: ShopListAdapter
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private lateinit var viewModel: ShopListViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        (applicationContext as MyApp).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)[ShopListViewModel::class.java]
         setupRecyclerView()
         observeData()
     }
@@ -47,33 +59,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        shopListAdapter.submitList(
-            listOf(
-                ShopItemEnabledDelegateItem(
-                    name = "Cалфетки",
-                    count = 3,
-                ),
-                ShopItemEnabledDelegateItem(
-                    name = "Cметана",
-                    count = 1,
-                ),
-                ShopItemDisabledDelegateItem(
-                    name = "Хлеб",
-                    count = 2,
-                ),
-                ShopItemDisabledDelegateItem(
-                    name = "Шоколадка",
-                    count = 5,
-                ),
-                ShopItemEnabledDelegateItem(
-                    name = "Молоко",
-                    count = 1,
-                ),
-                ShopItemDisabledDelegateItem(
-                    name = "Помидоры",
-                    count = 2,
-                )
-            )
-        )
+        lifecycleScope.launch {
+            viewModel.shopItems.collect { items ->
+                shopListAdapter.submitList(items)
+            }
+        }
     }
 }
